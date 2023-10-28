@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="536.0" prefWidth="1021.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AeropuertosTabla">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="Aeropuertos">
+            <items>
+              <MenuItem fx:id="mnItAniadirAeropuerto" mnemonicParsing="false" onAction="#aniadirAeropuerto" text="Añadir" />
+                  <MenuItem fx:id="mnItEditarAeropuerto" mnemonicParsing="false" onAction="#editarAeropuerto" text="Editar" />
+                  <MenuItem fx:id="mnItBorrarAeropuerto" mnemonicParsing="false" onAction="#borrarAeropuerto" text="Borrar" />
+                  <MenuItem fx:id="mnItMostarAeropuerto" mnemonicParsing="false" onAction="#mostrarAeropuerto" text="Mostrar Informacion" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Avion">
+            <items>
+              <MenuItem fx:id="mnItAniadirAvion" mnemonicParsing="false" onAction="#aniadirAvion" text="Añadir" />
+                  <MenuItem fx:id="mnItActivarAvion" mnemonicParsing="false" onAction="#activarAvion" text="Activar" />
+                  <MenuItem fx:id="mnItBorrarAvion" mnemonicParsing="false" onAction="#borrarAvion" text="Borrar" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Ayuda" />
+        </menus>
+      </MenuBar>
+      <HBox alignment="CENTER" prefHeight="38.0" prefWidth="600.0">
+         <children>
+            <Label text="LISTADO DE AEROPUERTOS">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="20.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="48.0" prefWidth="686.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="455.0">
+               <children>
+                  <RadioButton fx:id="rdBtnPublico" mnemonicParsing="false" text="Público">
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="categoria" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="rdBtnPrivados" mnemonicParsing="false" selected="true" text="Privados" toggleGroup="$categoria" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="413.0">
+               <children>
+                  <Label text="Nombre:" />
+                  <TextField fx:id="txtVNombre" onAction="#filtrarNombre">
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <TableView fx:id="tbViewAeropuertos" prefHeight="418.0" prefWidth="844.0">
+        <columns>
+          <TableColumn fx:id="tbColId" prefWidth="38.0" text="ID" />
+          <TableColumn fx:id="tbColNombre" prefWidth="106.0" text="Nombre" />
+            <TableColumn fx:id="tbColPais" prefWidth="125.66665649414062" text="País" />
+            <TableColumn fx:id="tbColCiudad" prefWidth="133.33331298828125" text="Ciudad" />
+            <TableColumn fx:id="tbColCalle" prefWidth="139.66668701171875" text="Calle" />
+            <TableColumn fx:id="tbColNumero" prefWidth="57.3333740234375" text="Número" />
+            <TableColumn fx:id="tbColAnio" prefWidth="47.3333740234375" text="Año" />
+            <TableColumn fx:id="tbColCapacidad" prefWidth="112.6666259765625" text="Capacidad" />
+            <TableColumn fx:id="tbColNumSocios" prefWidth="90.66668701171875" text="Nº Socios" />
+            <TableColumn fx:id="tbColFinanciacion" prefWidth="90.66668701171875" text="Financiacion" visible="false" />
+            <TableColumn fx:id="tbColNumTrabajadores" prefWidth="126.0" text="Número de Trabajadores" visible="false" />
+        </columns>
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </VBox.margin>
+      </TableView>
+   </children>
+</VBox>
