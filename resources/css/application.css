@@ -5,8 +5,20 @@
 	
 }
 
-BorderPane {
-	-fx-background-color: #757780;
+.borrar{
+	-fx-background-color: #FF0000
+}
+
+.login{
+	-fx-background-color: #1DBCB1
+}
+
+.guardar{
+	-fx-background-color: #1DBC2C
+}
+
+.cancelar{
+	-fx-background-color: #C80000
 }
 
 TableView {
