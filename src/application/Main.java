@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 
 public class Main extends Application {
 	
@@ -19,9 +20,11 @@ public class Main extends Application {
 			Parent root = FXMLLoader.load(getClass().getResource("/fxml/usuario.fxml"));
 			Scene scene = new Scene(root,400,220);
 			scene.getStylesheets().add(getClass().getResource("/css/application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			Image icono = new Image(Main.class.getResourceAsStream("/img/avion.png"));
+			primaryStage.getIcons().add(icono);
 			primaryStage.setTitle("AVIONES-LOGIN");
 			primaryStage.setResizable(false);
-			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();

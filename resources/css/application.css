@@ -21,10 +21,6 @@
 	-fx-background-color: #C80000
 }
 
-BorderPane {
-	-fx-background-color: #757780;
-}
-
 TableView {
 	-fx-background-color: #757780;
 }

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.Main;
 import dao.AeropuertoDao;
 import dao.AvionesDao;
 import javafx.collections.ObservableList;
@@ -24,6 +25,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.Aeropuertos;
@@ -105,7 +107,9 @@ public class AeropuertosTabla implements Initializable {
 	private AniadirAeropuerto addAeropuertoVentana;
 
 	private int aeropuertoIndex = -1;
-
+	
+	private Image icono = new Image(Main.class.getResourceAsStream("/img/avion.png"));
+	
 	void selectAeropuerto(MouseEvent event) {
 		if (tbViewAeropuertos.getSelectionModel().getSelectedItem() != null) {
 			aeropuertoIndex = tbViewAeropuertos.getSelectionModel().getSelectedIndex();
@@ -143,7 +147,10 @@ public class AeropuertosTabla implements Initializable {
 			addAeropuertoVentana.setParent(this, null);
 
 			Stage agregarStage = new Stage();
-			agregarStage.setScene(new Scene(root));
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/css/application.css").toExternalForm());
+			agregarStage.setScene(scene);
+			agregarStage.getIcons().add(icono);
 			agregarStage.setResizable(false);
 			agregarStage.setTitle("AVIONES-AÑADIR AEROPUERTOS");
 			agregarStage.showAndWait();
@@ -170,7 +177,10 @@ public class AeropuertosTabla implements Initializable {
 				addAeropuertoVentana.setParent(this, tbViewAeropuertos.getItems().get(aeropuertoIndex));
 
 				Stage agregarStage = new Stage();
-				agregarStage.setScene(new Scene(root));
+				Scene scene = new Scene(root);
+				scene.getStylesheets().add(getClass().getResource("/css/application.css").toExternalForm());
+				agregarStage.setScene(scene);
+				agregarStage.getIcons().add(icono);
 				agregarStage.setResizable(false);
 				agregarStage.setTitle("AVIONES-EDITAR AEROPUERTOS");
 				agregarStage.showAndWait();
@@ -256,7 +266,10 @@ public class AeropuertosTabla implements Initializable {
 			aAvionController.setParent(this);
 
 			Stage agregarStage = new Stage();
-			agregarStage.setScene(new Scene(root));
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/css/application.css").toExternalForm());
+			agregarStage.setScene(scene);
+			agregarStage.getIcons().add(icono);
 			agregarStage.setResizable(false);
 			agregarStage.setTitle("AVIONES-AÑADIR AVIÓN");
 			agregarStage.showAndWait();
@@ -276,7 +289,10 @@ public class AeropuertosTabla implements Initializable {
 			actDesAvionController.setParent(this);
 
 			Stage agregarStage = new Stage();
-			agregarStage.setScene(new Scene(root));
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/css/application.css").toExternalForm());
+			agregarStage.setScene(scene);
+			agregarStage.getIcons().add(icono);
 			agregarStage.setResizable(false);
 			agregarStage.setTitle("AVIONES-ACTIVAR/DESACTIVAR AVIÓN");
 			agregarStage.showAndWait();
@@ -296,7 +312,10 @@ public class AeropuertosTabla implements Initializable {
 			borrarAvionCont.setParent(this);
 
 			Stage agregarStage = new Stage();
-			agregarStage.setScene(new Scene(root));
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/css/application.css").toExternalForm());
+			agregarStage.setScene(scene);
+			agregarStage.getIcons().add(icono);
 			agregarStage.setResizable(false);
 			agregarStage.setTitle("AVIONES-ACTIVAR/DESACTIVAR AVIÓN");
 			agregarStage.showAndWait();
