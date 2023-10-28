@@ -12,9 +12,10 @@ public class Aeropuertos {
 	private int numSocios;
 	private int financiacion;
 	private int numTrabajadores;
+	private String imagen;
 	
 	public Aeropuertos( String nombre, String pais, String ciudad, String calle, int numero, int anio,
-			int capacidad, int financiacion, int numTrabajadores) {
+			int capacidad, int financiacion, int numTrabajadores, String imagen) {
 		this.nombre = nombre;
 		this.pais = pais;
 		this.ciudad = ciudad;
@@ -24,10 +25,11 @@ public class Aeropuertos {
 		this.capacidad = capacidad;
 		this.financiacion = financiacion;
 		this.numTrabajadores = numTrabajadores;
+		this.imagen = imagen;
 	}
 	
 	public Aeropuertos( String nombre, String pais, String ciudad, String calle, int numero, int anio,
-			int capacidad, int numSocios) {
+			int capacidad, int numSocios, String imagen) {
 		this.nombre = nombre;
 		this.pais = pais;
 		this.ciudad = ciudad;
@@ -36,10 +38,11 @@ public class Aeropuertos {
 		this.anio = anio;
 		this.capacidad = capacidad;
 		this.numSocios = numSocios;
+		this.imagen = imagen;
 	}
 	
 	public Aeropuertos(int id, String nombre, String pais, String ciudad, String calle, int numero, int anio,
-			int capacidad, int numSocios) {
+			int capacidad, int numSocios, String imagen) {
 		this.id = id;
 		this.nombre = nombre;
 		this.pais = pais;
@@ -49,10 +52,11 @@ public class Aeropuertos {
 		this.anio = anio;
 		this.capacidad = capacidad;
 		this.numSocios = numSocios;
+		this.imagen = imagen;
 	}
 	
 	public Aeropuertos(int id, String nombre, String pais, String ciudad, String calle, int numero, int anio,
-			int capacidad, int financiacion, int numTrabajadores) {
+			int capacidad, int financiacion, int numTrabajadores, String imagen) {
 		this.id = id;
 		this.nombre = nombre;
 		this.pais = pais;
@@ -63,6 +67,7 @@ public class Aeropuertos {
 		this.capacidad = capacidad;
 		this.financiacion = financiacion;
 		this.numTrabajadores = numTrabajadores;
+		this.imagen = imagen;
 	}
 
 	public int getId() {
@@ -151,6 +156,14 @@ public class Aeropuertos {
 
 	public void setNumTrabajadores(int numTrabajadores) {
 		this.numTrabajadores = numTrabajadores;
+	}
+	
+	public String getImagen() {
+		return imagen;
+	}
+	
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 	
 	@Override
