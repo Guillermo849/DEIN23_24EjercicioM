@@ -17,8 +17,8 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="73.0" prefWidth="618.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnGuardar" mnemonicParsing="false" onAction="#guardarAeropuerto" text="Guardar" />
-            <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#cancelar" text="Cancelar">
+            <Button fx:id="btnGuardar" mnemonicParsing="false" onAction="#guardarAeropuerto" styleClass="guardar" text="Guardar" />
+            <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#cancelar" styleClass="cancelar" text="Cancelar">
                <HBox.margin>
                   <Insets left="30.0" />
                </HBox.margin>
