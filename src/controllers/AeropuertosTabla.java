@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
@@ -123,6 +124,19 @@ public class AeropuertosTabla implements Initializable {
             ActionEvent a = new ActionEvent();
         	mostrarAeropuerto(a);
         }
+		MouseButton button = event.getButton();
+		if (button == MouseButton.SECONDARY && tbViewAeropuertos.getSelectionModel().getSelectedItem() != null) {
+			aeropuertoIndex = tbViewAeropuertos.getSelectionModel().getSelectedIndex();
+			ContextMenu cnMenuPersona = new ContextMenu();
+			MenuItem miModificar = new MenuItem("Modificar");
+			MenuItem miEliminar = new MenuItem("Eliminar");
+			cnMenuPersona.getItems().addAll(miModificar,miEliminar);
+			tbViewAeropuertos.setContextMenu(cnMenuPersona);
+			
+			/* Añadimos las acciones correspondientes a los Items de Menu */
+			miModificar.setOnAction(e -> editarAeropuerto(e));
+			miEliminar.setOnAction(e -> borrarAeropuerto(e));
+		}
 	}
 
 	@FXML
