@@ -119,6 +119,10 @@ public class AeropuertosTabla implements Initializable {
 		} else {
 			aeropuertoIndex = -1;
 		}
+		if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2) {
+            ActionEvent a = new ActionEvent();
+        	mostrarAeropuerto(a);
+        }
 	}
 
 	@FXML
@@ -380,7 +384,7 @@ public class AeropuertosTabla implements Initializable {
 	
 	private void atajos(KeyEvent event) {
 		ActionEvent a = new ActionEvent();
-		if (event.isControlDown() && event.getCode() == KeyCode.A) {
+		if (event.isControlDown() && event.getCode() == KeyCode.N) {
 			aniadirAeropuerto(a);
         }
 		if (event.isControlDown() && event.getCode() == KeyCode.E) {
@@ -391,7 +395,6 @@ public class AeropuertosTabla implements Initializable {
 		}
 	}
 	
-	
 	/**
 	 * Inicializará las acciones de los Radio Buttons. Determinará el tipo de
 	 * información que tendrá las Table Columns. Mostrará la información de los
@@ -401,7 +404,6 @@ public class AeropuertosTabla implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		Main.getStg().getScene().setOnKeyPressed(this::atajos);
-		
 		
 		rdBtnPublico.setOnAction(e -> getTabla(e));
 		rdBtnPrivados.setOnAction(e -> getTabla(e));
