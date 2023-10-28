@@ -3,6 +3,7 @@ package controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -108,6 +109,14 @@ public class AniadirAeropuerto {
 			ActionEvent e = new ActionEvent();
 			getTextFields(e);
 		}
+		
+		Platform.runLater(() -> {
+			btnGuardar.setDefaultButton(true);
+		});
+		
+		Platform.runLater(() -> {
+			btnCancelar.setCancelButton(true);
+		});
 	}
 
 	private void getTextFields(ActionEvent event) {
