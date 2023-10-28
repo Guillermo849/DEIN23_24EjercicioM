@@ -26,6 +26,9 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.Aeropuertos;
@@ -374,7 +377,21 @@ public class AeropuertosTabla implements Initializable {
 	public AeropuertoDao getAeropuertoD() {
 		return aeropuertoD;
 	}
-
+	
+	private void atajos(KeyEvent event) {
+		ActionEvent a = new ActionEvent();
+		if (event.isControlDown() && event.getCode() == KeyCode.A) {
+			aniadirAeropuerto(a);
+        }
+		if (event.isControlDown() && event.getCode() == KeyCode.E) {
+			editarAeropuerto(a);
+		}
+		if (event.isControlDown() && event.getCode() == KeyCode.B) {
+			editarAeropuerto(a);
+		}
+	}
+	
+	
 	/**
 	 * Inicializará las acciones de los Radio Buttons. Determinará el tipo de
 	 * información que tendrá las Table Columns. Mostrará la información de los
@@ -382,7 +399,10 @@ public class AeropuertosTabla implements Initializable {
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-
+		
+		Main.getStg().getScene().setOnKeyPressed(this::atajos);
+		
+		
 		rdBtnPublico.setOnAction(e -> getTabla(e));
 		rdBtnPrivados.setOnAction(e -> getTabla(e));
 
