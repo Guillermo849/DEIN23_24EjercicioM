@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
@@ -26,6 +27,9 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.Aeropuertos;
@@ -115,6 +119,23 @@ public class AeropuertosTabla implements Initializable {
 			aeropuertoIndex = tbViewAeropuertos.getSelectionModel().getSelectedIndex();
 		} else {
 			aeropuertoIndex = -1;
+		}
+		if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2) {
+            ActionEvent a = new ActionEvent();
+        	mostrarAeropuerto(a);
+        }
+		MouseButton button = event.getButton();
+		if (button == MouseButton.SECONDARY && tbViewAeropuertos.getSelectionModel().getSelectedItem() != null) {
+			aeropuertoIndex = tbViewAeropuertos.getSelectionModel().getSelectedIndex();
+			ContextMenu cnMenuPersona = new ContextMenu();
+			MenuItem miModificar = new MenuItem("Modificar");
+			MenuItem miEliminar = new MenuItem("Eliminar");
+			cnMenuPersona.getItems().addAll(miModificar,miEliminar);
+			tbViewAeropuertos.setContextMenu(cnMenuPersona);
+			
+			/* Añadimos las acciones correspondientes a los Items de Menu */
+			miModificar.setOnAction(e -> editarAeropuerto(e));
+			miEliminar.setOnAction(e -> borrarAeropuerto(e));
 		}
 	}
 
@@ -374,7 +395,20 @@ public class AeropuertosTabla implements Initializable {
 	public AeropuertoDao getAeropuertoD() {
 		return aeropuertoD;
 	}
-
+	
+	private void atajos(KeyEvent event) {
+		ActionEvent a = new ActionEvent();
+		if (event.isControlDown() && event.getCode() == KeyCode.N) {
+			aniadirAeropuerto(a);
+        }
+		if (event.isControlDown() && event.getCode() == KeyCode.E) {
+			editarAeropuerto(a);
+		}
+		if (event.isControlDown() && event.getCode() == KeyCode.B) {
+			editarAeropuerto(a);
+		}
+	}
+	
 	/**
 	 * Inicializará las acciones de los Radio Buttons. Determinará el tipo de
 	 * información que tendrá las Table Columns. Mostrará la información de los
@@ -382,7 +416,9 @@ public class AeropuertosTabla implements Initializable {
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-
+		
+		Main.getStg().getScene().setOnKeyPressed(this::atajos);
+		
 		rdBtnPublico.setOnAction(e -> getTabla(e));
 		rdBtnPrivados.setOnAction(e -> getTabla(e));
 

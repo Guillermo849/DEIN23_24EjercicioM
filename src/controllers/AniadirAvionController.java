@@ -1,6 +1,7 @@
 package controllers;
 
 import dao.AvionesDao;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -60,6 +61,14 @@ public class AniadirAvionController {
 		obLstAeropuetos.addAll(aeropuertosT.getAeropuertoD().cargarAeropuertosPublicos());
 
 		cmbxAeropuertos.setItems(obLstAeropuetos);
+		
+		Platform.runLater(() -> {
+			btnGuardar.setDefaultButton(true);
+		});
+		
+		Platform.runLater(() -> {
+			btnCancelar.setCancelButton(true);
+		});
 	}
 
 	@FXML

@@ -1,6 +1,7 @@
 package controllers;
 
 import dao.AvionesDao;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -66,6 +67,14 @@ public class ActivarDesactivarAvionController {
 				cmBxAviones
 						.setItems(avionDao.cargarAvion(cmbxAeropuertos.getSelectionModel().getSelectedItem().getId()));
 			}
+		});
+		
+		Platform.runLater(() -> {
+			btnGuardar.setDefaultButton(true);
+		});
+		
+		Platform.runLater(() -> {
+			btnCancelar.setCancelButton(true);
 		});
 	}
 

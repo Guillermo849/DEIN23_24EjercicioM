@@ -48,6 +48,10 @@ public class Main extends Application {
 		}
 	}
 	
+	public static Stage getStg() {
+		return stg;
+	}
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
